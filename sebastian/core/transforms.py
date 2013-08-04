@@ -91,6 +91,16 @@ def reverse():
         return OSequence(sorted(new_elements, key=lambda x: x[OFFSET_64]))
     return _
 
+@transform_sequence
+def delay(interval, point):
+    """
+    Transpose a point by an interval, using the Sebastian interval system
+    """
+    if "offset" in point:
+        point["offset"] = point["offset"] + interval
+    if OFFSET_64 in point:
+        point[OFFSET_64] = point[OFFSET_64] + interval
+    return point
 
 def subseq(start_offset=0, end_offset=None):
     """
@@ -255,3 +265,4 @@ def dynamics(start, end=None):
 
         return retval
     return _
+
