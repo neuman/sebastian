@@ -92,14 +92,14 @@ def reverse():
     return _
 
 @transform_sequence
-def delay(interval, point):
+def delay(duration, point):
     """
-    Transpose a point by an interval, using the Sebastian interval system
+    Delay a point by a duration
     """
     if "offset" in point:
-        point["offset"] = point["offset"] + interval
+        point["offset"] = point["offset"] + duration
     if OFFSET_64 in point:
-        point[OFFSET_64] = point[OFFSET_64] + interval
+        point[OFFSET_64] = point[OFFSET_64] + duration
     return point
 
 def subseq(start_offset=0, end_offset=None):
